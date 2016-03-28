@@ -1,0 +1,163 @@
+<!-- This page is used to display the MaritzCX Configuration Settings -->
+<apex:page controller="SURVEYSYNCH.ConfigurationController" ><br />
+<script>
+ var newWin=null;
+ function openLookupPopup(name, id)
+ {
+  var url="/apex/SelectMCXSurvey?namefield=" + name + "&idfield=" + id;
+  newWin=window.open(url, '','height=500,width=650,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=no,status=no');
+  if (window.focus)
+  {
+   newWin.focus();
+  }
+    
+     return false;
+    }
+       
+ function closeLookupPopup()
+ {
+    if (null!=newWin)
+    {
+       newWin.close();
+    } 
+ }
+</script>
+<style type="text/css">
+        fieldwidth { width: 150px; }
+</style>
+   <apex:form id="myForm">
+        <apex:pageBlock tabStyle="Case" title="Configuration"><br />
+            <apex:pageMessages id="msg" />
+            <apex:pageBlockSection title="Visualization Configuration" collapsible="false" columns="1">
+        
+                <apex:pageBlockSectionItem ><apex:outputText escape="true" value="The settings below are needed to display charts on the Contact and Account screens.Minimum and Maximum are the rating values for the associated questions."></apex:outputText> </apex:pageBlockSectionItem>
+               <!-- <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>  -->
+                </apex:pageBlockSection>
+                <apex:pageBlockSection columns="2">
+                
+                <apex:pageBlockSectionItem >
+                <apex:outputText escape="true" style="font-weight:bold;" value="{!$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_1__c.Label}"></apex:outputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem ><apex:outputText escape="true" style="font-weight:bold" value=" {!$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_2__c.Label}"></apex:outputText>
+                </apex:pageBlockSectionItem>
+                
+                <!-- This output text is used to display KeyMetric 1 min Configuration -->
+                <apex:pageBlockSectionItem >    <apex:outputText escape="true" value="Minimum" />
+                    <apex:inputText value="{!keyMetric1Min}" style="width:150px;">
+                    <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </apex:pageBlockSectionItem>
+                                
+                                <apex:pageBlockSectionItem >
+                <!-- This output text is used to display KeyMetric 2 min Configuration -->
+                    <apex:outputText escape="true" value="Minimum"/>
+                    <apex:inputText value="{!keyMetric2Min}" style="width:150px;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                <!-- This output text is used to display KeyMetric 1 max Configuration -->
+                    <apex:outputText escape="true" value="Maximum" />
+                    <apex:inputText value="{!keyMetric1Max}" style="width:150px;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                <!-- This output text is used to display KeyMetric 2 max Configuration -->
+                    <apex:outputText escape="true" value="Maximum" />
+                    <apex:inputText value="{!keyMetric2Max}" style="width:150px;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputText escape="true" value="Goal" />
+                    <apex:inputText value="{!keyMetric1Goal}" style="width:150px;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputText escape="true" value="Goal" />
+                    <apex:inputText value="{!keyMetric2Goal}" style="width:150px;">
+                        <apex:actionSupport event="onclick" action="{!clearMessage}" rerender="msg" />
+                    </apex:inputText>
+                </apex:pageBlockSectionItem>
+                
+                  <apex:pageBlockSectionItem >
+                    <apex:outputText escape="true" value="Chart" />
+                    <apex:selectList value="{!selectedChartTypeK1}" size="1" >
+                        <apex:selectOptions value="{!chartitems}"/>
+                        <apex:actionSupport event="onchange" action="{!clearMessage}" rerender="msg" />
+                    </apex:selectList>                    
+                </apex:pageBlockSectionItem>
+                
+                 <apex:pageBlockSectionItem >
+                    <apex:outputText escape="true" value="Chart" />
+                    <apex:selectList value="{!selectedChartTypeK2}" size="1">
+                        <apex:selectOptions value="{!chartitems}"/>
+                        <apex:actionSupport event="onchange" action="{!clearMessage}" rerender="msg" />
+                    </apex:selectList>                    
+                </apex:pageBlockSectionItem>
+             
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Workflow Related Surveys" columns="1" collapsible="false" id="surveypageblocksection">
+            <apex:pageBlockSectionItem >
+            <apex:outputText escape="true" value="MaritzCX for Salesforce offers two workflows that allow you to send a survey to a contact when a case is closed or a lead is converted." ></apex:outputText> 
+            </apex:pageBlockSectionItem></apex:pageBlockSection>
+           <br/>
+            <table>
+          <tr>
+             <td>  <apex:outputText style="padding-left:93px;font-weight: bold;font-size: 91%;font-family: Arial,Helvetica,sans-serif;color: #4a4a56;" escape="true"  value="Case Closure"></apex:outputText>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td align="left"> <apex:inputText title="{!CaseClosureSurveyName}" value="{!CaseClosureSurveyName}" id="CaseClosureSurveyName" onFocus="this.blur()" disabled="false" html-readonly="false" style="width:150px;"/>
+           <apex:image url="/s.gif"  alt="Lookup (New Window)" styleClass="lookupIcon" onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';" onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';" onclick="openLookupPopup('{!$Component.CaseClosureSurveyName}', '{!$Component.CaseClosureSurveyID}'); return false"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:commandLink value="Clear" action="{!clearCaseClosuresurvey}" reRender="CaseClosureSurveyName,CaseClosureSurveyID"/></td>
+                
+                 
+                    <apex:inputHidden value="{!CaseClosureSurveyID}" id="CaseClosureSurveyID" />
+                  </tr>
+                   
+                 
+                  <tr> 
+                  
+                  </tr>
+                  <tr> <td><br/></td>
+               <td ><apex:inputCheckbox style="Vertical-align:middle" value="{!Dont_send_surveys_for_cases}"/><apex:outputText style="Vertical-align:middle" value="Do not send surveys for cases created from the MaritzCX platform">    </apex:outputText> </td>
+                 <td><br/></td>
+                  </tr>
+               <tr> <td><br/></td>
+                  
+                  </tr>
+              <tr> <td> <apex:outputText escape="true" style="padding-left:63px;font-weight: bold;font-size: 91%;font-family: Arial,Helvetica,sans-serif;color: #4a4a56;"  value="Lead Conversion">&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText></td>
+                        
+               <td align="left"> <apex:inputText title="{!LeadConversionSurveyName}" value="{!LeadConversionSurveyName}" id="LeadConversionSurveyName" onFocus="this.blur()" disabled="false" style="width:150px;"/> <apex:image url="/s.gif" alt="Lookup (New Window)" styleClass="lookupIcon" onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';" onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';" onclick="openLookupPopup('{!$Component.LeadConversionSurveyName}', '{!$Component.LeadConversionSurveyID}'); return false"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:commandLink value="Clear"  action="{!clearLeadConversionsurvey}" reRender="LeadConversionSurveyName,LeadConversionSurveyID"/></td>
+                
+
+                    <apex:inputHidden value="{!LeadConversionSurveyID}" id="LeadConversionSurveyID" />
+                  </tr>  
+                   </table>
+                  <!-- Case Settings Section -START-->
+             
+            <apex:pageBlockSection title="Case Settings" collapsible="false" columns="1">
+                <apex:pageBlockSectionItem ><apex:outputText escape="true" value="The settings below can be used for managing MaritzCX Cases."></apex:outputText> </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <br/>
+            <apex:outputPanel id="caseSettings">
+                <table width="75%">
+                    <tr>
+                        <td style="width:25%;"><apex:outputText style="padding-left:93px;font-weight: bold;font-size: 91%;font-family: Arial,Helvetica,sans-serif;color: #4a4a56;" escape="true"  value="Record Type"></apex:outputText>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td style="width:25%;">
+                            <apex:selectList label="Record Type" value="{!caseRecordTypeId}" multiselect="false" size="1" style="width:150px;align:left;" disabled="{!caseRecordTypeList.size==0}">
+                                <apex:selectOptions value="{!caseRecordTypes}"/>
+                            </apex:selectList>
+                        </td>
+                        <td><apex:pageMessage id="recordTypeMsg" summary="{!recordTypeMsg}" severity="info" strength="1" rendered="{!recordTypeMsg!=''||caseRecordTypeList.size==0}"/></td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+                  <!-- Case Settings Section -END-->
+            <apex:pageBlockButtons style="padding-left:104px" location="bottom">
+            <!-- This command button is used to set the Configuration -->
+                <apex:commandButton value="   Save   "  action="{!saveConfiguration}" rerender="msg,caseSettings"/>
+            </apex:pageBlockButtons>                    
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

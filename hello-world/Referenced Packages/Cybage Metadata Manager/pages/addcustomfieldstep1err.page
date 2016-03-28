@@ -1,0 +1,93 @@
+<apex:page controller="partnernakul.AddNewCustomFieldStep1" sidebar="false">
+ <style type="text/css">
+.headerbar
+{
+height:25px;
+color:black;
+font-size:15px;
+font-weight:bold;
+background-color:grey;
+}
+</style>
+
+<apex:sectionHeader subtitle="New Custom Field" title="Add Field"/> 
+<apex:pageBlock title="Step 1. Choose Field Type" mode="edit">
+</apex:pageBlock>
+<form  action="/apex/step1controller" id="step1form" method="POST" name="step1form" >
+<div class="fieldType">
+    <div class="bPageBlock brandSecondaryBrd secondaryPalette" id="ep">
+        <div class="pbBody">
+        <br/>
+            <div class="pbWizardFooter" align="center">
+            <div class="pbBottomButtons" align="center">
+                  <input value=" Next "  class="btn" name="goNext" title="Next" type="submit" />
+                  <input value="Cancel"  class="btnCancel" name="cancel" title="Cancel" type="submit" />         
+             </div>
+         </div>
+         <br/>
+            <div class="headerbar" id="head_1_ep">
+               <h3>&nbsp;&nbsp;Data Type<span  class="titleSeparatingColon">:</span></h3>
+            </div>
+            <div class="pbSubsection">
+                <table  class="detailList" border="0" cellpadding="10" cellspacing="0">
+                    <tr>
+                        <td align="left"><span class="error"><input  checked="checked" id="dtypeNoneSelected" name="dtype" type="radio" value="NoneSelected" align="left"/>&nbsp;<label align="left" for="dtypeNoneSelected" style="font:arial,sans-serif;color:#003366;"><b>None Selected</b></label></span><div class="errorMsg"><strong>Error:</strong> You must select a data type</div></td>
+                        <td class="data2Col" colspan="3">Select one of the data types below.</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="headerbar" id="head_1_ep">
+               <h3>&nbsp;&nbsp;<span  class="titleSeparatingColon">:</span></h3>
+            </div>
+            <div class="pbSubsection">
+                <table  class="detailList" border="0" cellpadding="10" cellspacing="0">
+                    <tr>
+                        <td align="left"><input  id="dtypeV" name="dtype" type="radio" value="AutoNumber" />&nbsp;<label for="dtypeV" align="left" style="font:arial,sans-serif;color:#003366;"><b>Auto Number</b></label></td>
+                        <td class="data2Col" colspan="3">A system-generated sequence number that uses a display format you define. The number is automatically incremented for each new record.</td>
+                    </tr>
+                    <tr>
+                        <td align="left"><input  id="dtypeB" name="dtype" type="radio" value="Checkbox" />&nbsp;<label for="dtypeB" align="left" style="font:arial,sans-serif;color:#003366;"><b>Checkbox</b></label></td>
+                        <td class="data2Col" colspan="3">Allows users to select a True (checked) or False (unchecked) value.</td>
+                    </tr>
+                    <tr>
+                        <td align="left"><input  id="dtypeC" name="dtype" type="radio" value="Currency" />&nbsp;<label for="dtypeC" align="left" style="font:arial,sans-serif;color:#003366;"><b>Currency</b></label></td>
+                        <td class="data2Col" colspan="3">Allows users to enter a dollar or other currency amount and automatically formats the field as a currency amount. This can be useful if you export data to Excel or another spreadsheet.</td>
+                    </tr>
+                    <tr>
+                        <td align="left"><input  id="dtypeD" name="dtype" type="radio" value="Date" />&nbsp;<label for="dtypeD" align="left" style="font:arial,sans-serif;color:#003366;"><b>Date</b></label></td>
+                        <td class="data2Col" colspan="3">Allows users to enter a date or pick a date from a popup calendar.</td>
+                    </tr>
+                    <tr>
+                        <td align="left"><input  id="dtypeD" name="dtype" type="radio" value="DateTime" />&nbsp;<label for="dtypeD" align="left" style="font:arial,sans-serif;color:#003366;"><b>Date/Time</b></label></td>
+                        <td class="data2Col" colspan="3">Allows users to enter a date or pick a date from a popup calendar.</td>
+                    </tr>
+                    <tr>
+                        <td align="left"><input  id="dtypeD" name="dtype" type="radio" value="Email" />&nbsp;<label for="dtypeD" align="left" style="font:arial,sans-serif;color:#003366;"><b>Email</b></label></td>
+                        <td class="data2Col" colspan="3">Allows users to enter an email address, which is validated to ensure proper format. If this field is specified for a contact or lead, users can choose the address when clicking Send an Email. Note that custom email addresses cannot be used for mass emails.</td>
+                    </tr>
+                    <tr>
+                        <td align="left"><input  id="dtypeD" name="dtype" type="radio" value="Geolocation" />&nbsp;<label for="dtypeD" align="left" style="font:arial,sans-serif;color:#003366;"><b>Geolocation</b></label></td>
+                        <td class="data2Col" colspan="3">(Beta) Allows users to define locations.</td>
+                    </tr>
+<tr><td align="left"><input  id="dtypeN" name="dtype" type="radio" value="Number" /><label for="dtypeN" align="left" style="font:arial,sans-serif;color:#003366;"><b>Number</b></label></td><td class="data2Col" colspan="3">Allows users to enter any number. Leading zeros are removed.</td></tr>
+<tr><td align="left"><input  id="dtypeP" name="dtype" type="radio" value="Percent" /><label for="dtypeP" align="left" style="font:arial,sans-serif;color:#003366;"><b>Percent</b></label></td><td class="data2Col" colspan="3">Allows users to enter a percentage number, for example, '10' and automatically adds the percent sign to the number.</td></tr>
+<tr><td align="left"><input  id="dtypeH" name="dtype" type="radio" value="Phone" /><label for="dtypeH" align="left" style="font:arial,sans-serif;color:#003366;"><b>Phone</b></label></td><td class="data2Col" colspan="3">Allows users to enter any phone number. Automatically formats it as a phone number.</td></tr>
+<tr><td align="left"><input  id="dtypeL" name="dtype" type="radio" value="Picklist" /><label for="dtypeL" align="left" style="font:arial,sans-serif;color:#003366;"><b>Picklist</b></label></td><td class="data2Col" colspan="3">Allows users to select a value from a list you define.</td></tr>
+<tr><td align="left"><input  id="dtypeQ" name="dtype" type="radio" value="MultiselectPicklist" /><label for="dtypeQ" align="left" style="font:arial,sans-serif;color:#003366;"><b>Picklist<br/>(Multi-Select)</b></label></td><td class="data2Col" colspan="3">Allows users to select multiple values from a list you define.</td></tr>
+<tr><td align="left"><input  id="dtypeS" name="dtype" type="radio" value="Text" /><label for="dtypeS" align="left" style="font:arial,sans-serif;color:#003366;"><b>Text</b></label></td><td class="data2Col" colspan="3">Allows users to enter any combination of letters and numbers.</td></tr>
+<tr><td align="left"><input  id="dtypeX" name="dtype" type="radio" value="TextArea" /><label for="dtypeX" align="left" style="font:arial,sans-serif;color:#003366;"><b>Text Area</b></label></td><td class="data2Col" colspan="3">Allows users to enter up to 255 characters on separate lines.</td></tr>
+
+                 </table>
+              </div>
+              </div>
+          <div class="pbWizardFooter" align="center">
+            <div class="pbBottomButtons" align="center">
+                  <input value=" Next "  class="btn" name="goNext" title="Next" type="submit" />
+                  <input value="Cancel"  class="btnCancel" name="cancel" title="Cancel" type="submit" />         
+             </div>
+         </div> 
+             </div>
+             </div>
+</form>
+     <apex:pageMessages /> 
+</apex:page>

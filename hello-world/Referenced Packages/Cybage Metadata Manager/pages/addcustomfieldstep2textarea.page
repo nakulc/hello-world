@@ -1,0 +1,78 @@
+<apex:page controller="partnernakul.AddNewCustomFieldFinal" sidebar="false">
+<script>
+function isInteger(s)
+{
+      var i;
+    s = s.toString();
+      for (i = 0; i < s.length; i++)
+      {
+         var c = s.charAt(i);
+         if (isNaN(c)) 
+       {
+        alert("The value of Length is not a number");
+        return false;
+       }
+      }
+      return true;
+}
+function alphanumeric(uadd)  
+{   
+    var letters = /^[0-9a-zA-Z.\s]+$/;  
+    if(uadd.match(letters))  
+    {  
+        return true;  
+    }  
+    else  
+    {  
+        alert('Field Label/Default Value must have alphanumeric characters only');  
+        return false;  
+    }  
+}  
+function isIntegerFinal()
+{ 
+      if(alphanumeric(document.getElementById('{!$Component.form1.pb2.pbs1.Field4}').value)&&alphanumeric(document.getElementById('{!$Component.form1.pb2.pbs1.Field1}').value))
+      return true;
+      return false;     
+}
+</script>
+    <apex:form id="form1"> 
+    <apex:sectionHeader subtitle="New Custom Field" title="Add Field"/>
+    <apex:pageBlock id="pb1" title="Step 2. Enter Attributes">
+</apex:pageBlock>    
+    <apex:pageBlock id="pb2">
+     <apex:pageBlockButtons >  
+         <apex:outputLink value="/apex/addcustomfieldstep1"><h1>Previous</h1></apex:outputLink>&nbsp;&nbsp; 
+        <apex:commandButton styleClass="Field9" value="Add Field" action="{!addField12}" onclick="return isIntegerFinal()"/>  &nbsp;&nbsp; 
+        <apex:outputLink value="/apex/addcustomfieldstep1"><h1>Cancel</h1></apex:outputLink>
+        </apex:pageBlockButtons>
+    <apex:pageBlockSection id="pbs1">
+       <apex:selectList id="objs" value="{!selectedObjects}" label="Object/s" multiselect="true" size="5" onchange="RefreshCategories(this.value)" required="true" >
+             <apex:selectOptions value="{!allObjects}"/>            
+        </apex:selectList>
+        Select Multiple Objects By Pressing Ctrl
+        <br/>
+        <br/>   
+        <apex:inputText id="Field1" value="{!FieldLabel}" required="true" label="Field Label"/> 
+        <div class="mouseOverInfoOuter" onfocus="addMouseOver(this)" onmouseover="addMouseOver(this)" tabindex="0"><img src="/s.gif" alt=""  class="infoIcon" title=""/><div class="mouseOverInfo" style="display:none;">Enter a label to be used on displays, page layouts, reports, and list views.</div></div>             
+        <br/>
+        <br/>    
+    <apex:inputText id="fieldtype" value="{!fieldType}" disabled="true" label="Field Type"/>
+        <br/>
+        <br/>       
+        <apex:inputText id="Field4" value="{!DefaultValue}" required="true" label="Default Value"/>
+        <br/>
+        <br/>
+        
+        
+        
+    <apex:selectRadio value="{!reqOrNot}" required="true" label="Required Field">
+            <apex:selectOptions value="{!items}"/>
+            </apex:selectRadio>
+            Always require a value in this field in order to save a record 
+         <br/>
+           
+            </apex:pageBlockSection>  
+            </apex:pageBlock>  
+     <apex:pageMessages />
+    </apex:form> 
+</apex:page>

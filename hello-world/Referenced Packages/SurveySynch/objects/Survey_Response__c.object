@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>ALG_Response_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>ALG Response Id</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>ALG_Survey_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>ALG Survey Id</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Lookup field for Account</description>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>MaritzCX Responses</relationshipLabel>
+        <relationshipName>Allegiance_Responses</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Comments_1__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Comments 1</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Comments_2__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Comments 2</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Contact_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>MaritzCX Responses</relationshipLabel>
+        <relationshipName>Allegiance_Survey_Responses</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Key_Metric_1_Bar__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF( (Key_Metric_1__c&lt;=$Setup.ALG_Metric__c.KM1_Max__c)&amp;&amp;(Key_Metric_1__c&gt;=$Setup.ALG_Metric__c.KM1_Min__c),
+	IF(((Key_Metric_1__c-$Setup.ALG_Metric__c.KM1_Min__c)/($Setup.ALG_Metric__c.KM1_Max__c-$Setup.ALG_Metric__c.KM1_Min__c)*100) &gt; 80,
+	IMAGE(&quot;/resource/&quot;+ $Setup.AlPublic__c.NamespacePrefix__c +&quot;__green_img&quot;, &quot;green&quot;, 15, ((Key_Metric_1__c-$Setup.ALG_Metric__c.KM1_Min__c)/($Setup.ALG_Metric__c.KM1_Max__c-$Setup.ALG_Metric__c.KM1_Min__c)*100)/100*80) &amp; &quot; &quot; + TEXT(Key_Metric_1__c),
+		IF(((Key_Metric_1__c-$Setup.ALG_Metric__c.KM1_Min__c)/($Setup.ALG_Metric__c.KM1_Max__c-$Setup.ALG_Metric__c.KM1_Min__c)*100) &gt; 60,
+		IMAGE(&quot;/resource/&quot;+ $Setup.AlPublic__c.NamespacePrefix__c +&quot;__yellow_img&quot;, &quot;yellow&quot;, 15, ((Key_Metric_1__c-$Setup.ALG_Metric__c.KM1_Min__c)/($Setup.ALG_Metric__c.KM1_Max__c-$Setup.ALG_Metric__c.KM1_Min__c)*100)/100*80) &amp; &quot; &quot; + TEXT(Key_Metric_1__c),
+		IMAGE(&quot;/resource/&quot;+ $Setup.AlPublic__c.NamespacePrefix__c +&quot;__red_img&quot;, &quot;red&quot;, 15, ((Key_Metric_1__c-$Setup.ALG_Metric__c.KM1_Min__c)/($Setup.ALG_Metric__c.KM1_Max__c-$Setup.ALG_Metric__c.KM1_Min__c)*100)/100*80) &amp; &quot; &quot; + TEXT(Key_Metric_1__c)
+		)
+	),
+	TEXT(Key_Metric_1__c)
+)</formula>
+        <label>Key Metric 1</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Key_Metric_1__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Key Metric 1</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Key_Metric_2_Bar__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF( (Key_Metric_2__c&lt;=$Setup.ALG_Metric__c.KM2_Max__c)&amp;&amp;(Key_Metric_2__c&gt;=$Setup.ALG_Metric__c.KM2_Min__c),
+	IF(((Key_Metric_2__c-$Setup.ALG_Metric__c.KM2_Min__c)/($Setup.ALG_Metric__c.KM2_Max__c-$Setup.ALG_Metric__c.KM2_Min__c)*100) &gt; 80,
+	IMAGE(&quot;/resource/&quot;+ $Setup.AlPublic__c.NamespacePrefix__c +&quot;__green_img&quot;, &quot;green&quot;, 15, ((Key_Metric_2__c-$Setup.ALG_Metric__c.KM2_Min__c)/($Setup.ALG_Metric__c.KM2_Max__c-$Setup.ALG_Metric__c.KM2_Min__c)*100)/100*80) &amp; &quot; &quot; + TEXT(Key_Metric_2__c),
+		IF(((Key_Metric_2__c-$Setup.ALG_Metric__c.KM2_Min__c)/($Setup.ALG_Metric__c.KM2_Max__c-$Setup.ALG_Metric__c.KM2_Min__c)*100) &gt; 60,
+		IMAGE(&quot;/resource/&quot;+ $Setup.AlPublic__c.NamespacePrefix__c +&quot;__yellow_img&quot;, &quot;yellow&quot;, 15, ((Key_Metric_2__c-$Setup.ALG_Metric__c.KM2_Min__c)/($Setup.ALG_Metric__c.KM2_Max__c-$Setup.ALG_Metric__c.KM2_Min__c)*100)/100*80) &amp; &quot; &quot; + TEXT(Key_Metric_2__c),
+		IMAGE(&quot;/resource/&quot;+ $Setup.AlPublic__c.NamespacePrefix__c +&quot;__red_img&quot;, &quot;red&quot;, 15, ((Key_Metric_2__c-$Setup.ALG_Metric__c.KM2_Min__c)/($Setup.ALG_Metric__c.KM2_Max__c-$Setup.ALG_Metric__c.KM2_Min__c)*100)/100*80) &amp; &quot; &quot; + TEXT(Key_Metric_2__c)
+		)
+	),
+	TEXT(Key_Metric_2__c)
+)</formula>
+        <label>Key Metric 2</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Key_Metric_2__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Key Metric 2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Metric_1__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Metric 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Metric_2__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Metric 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_View_Link__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF(  Survey_Id__r.Allegiance_Survey_Response_View_Link__c == true &amp;&amp; NOT(ISNULL(ALG_Response_Id__c)),
+HYPERLINK(
+&quot;javascript:var responseId = &apos;&quot; + TEXT(ALG_Response_Id__c) + &quot;&apos;;var adjScrWidth;var adjScrHeight;adjScrWidth = (window.screen.width / 2) - (250);adjScrHeight = (window.screen.height / 2) - (275);var win2 = window.open(&apos;/apex/&quot;+$Setup.AlPublic__c.NamespacePrefix__c+&quot;__DisplayResponseView?ResponseId=&apos; + responseId, &apos;Response&apos;, &apos;status=no,height=550,width=500,resizable=yes,left=&apos; + adjScrWidth + &apos;,top=&apos; + adjScrHeight + &apos;,screenX=&apos; + adjScrWidth + &apos;,screenY=&apos; + adjScrHeight + &apos;,toolbar=no,menubar=no,scrollbars=1,location=no,directories=no,titlebar=no,menubar=no&apos;);win2.focus();&quot;,
+&quot;View Response&quot;,
+&quot;_self&quot;
+),&apos;&apos;)</formula>
+        <label>View Response</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Survey_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Survey</label>
+        <referenceTo>Survey__c</referenceTo>
+        <relationshipName>Survey_Response</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>respondent_email__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>MaritzCX Response</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Contact_Id__c</columns>
+        <columns>Metric_1__c</columns>
+        <columns>Metric_2__c</columns>
+        <columns>Comments_1__c</columns>
+        <columns>Comments_2__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Survey Response</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Survey Responses</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Contact_Id__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Key_Metric_1_Bar__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Key_Metric_2_Bar__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Metric_1__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Metric_2__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Comments_1__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Comments_2__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

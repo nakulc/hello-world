@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>ALG_Response_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>ALG Survey Response Id</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Alert_Rule_Criteria__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Alert Rule Criteria</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Respondent_Email__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_Deleted_From_MaritzCX__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This field keeps track of whether the response is available or deleted from the system.</description>
+        <externalId>false</externalId>
+        <label>Response Deleted From MaritzCX</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Response_View_Link__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF( Response_Deleted_From_MaritzCX__c , $Label.surveysynch__Deleted_Response_Message_Formula , 
+IF(  NOT(ISNULL(ALG_Response_Id__c))  ,
+HYPERLINK(
+&quot;javascript:var responseId = &apos;&quot; +   TEXT(ALG_Response_Id__c)   + &quot;&apos;;var adjScrWidth;var adjScrHeight;adjScrWidth = (window.screen.width / 2) - (250);adjScrHeight = (window.screen.height / 2) - (275);var win2 = window.open(&apos;/apex/&quot;+$Setup.AlPublic__c.NamespacePrefix__c+&quot;__DisplayResponseView?ResponseId=&apos; + responseId, &apos;Response&apos;, &apos;status=no,height=550,width=500,resizable=yes,left=&apos; + adjScrWidth + &apos;,top=&apos; + adjScrHeight + &apos;,screenX=&apos; + adjScrWidth + &apos;,screenY=&apos; + adjScrHeight + &apos;,toolbar=no,menubar=no,scrollbars=1,location=no,directories=no,titlebar=no,menubar=no&apos;);win2.focus();&quot;,
+&quot;View Response&quot;,
+&quot;_self&quot;
+),&apos;&apos;))</formula>
+        <label>View Response</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Survey_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Survey</label>
+        <referenceTo>Survey__c</referenceTo>
+        <relationshipLabel>Cases</relationshipLabel>
+        <relationshipName>Cases</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Survey_Response_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>MaritzCX Survey Response</label>
+        <referenceTo>Survey_Response__c</referenceTo>
+        <relationshipLabel>Cases</relationshipLabel>
+        <relationshipName>Cases</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <validationRules>
+        <fullName>Prevent_MaritzCX_Case_Update</fullName>
+        <active>true</active>
+        <description>This validation rule will prevent all the users except System Administrators to modify the case whose response is deleted from the system.</description>
+        <errorConditionFormula>IF(ISCHANGED(Response_Deleted_From_MaritzCX__c), NOT(Response_Deleted_From_MaritzCX__c), Response_Deleted_From_MaritzCX__c)</errorConditionFormula>
+        <errorMessage>The response that originated this case has been deleted from the MaritzCX platform. As a result, this case cannot be updated.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>UpsellCrosssellOpportunity</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>true</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>true</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Up-sell / Cross-sell Opportunity</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>true</showsLocation>
+        <showsStatus>true</showsStatus>
+        <url>https://na1.salesforce.com/opp/oppedit.jsp?accid={!Account.Id}&amp;opp3=Up-sell+/+Cross-sell&amp;opp5=Existing+Customer&amp;opp6=Customer+Support</url>
+    </webLinks>
+</CustomObject>

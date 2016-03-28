@@ -1,0 +1,17 @@
+<!-- This page is used to display survey questions on the Survey -->
+<apex:page showHeader="true" standardController="SURVEYSYNCH__Survey__c" extensions="SURVEYSYNCH.SurveyQuestionsOnSurveyControllerExt" showChat="false">
+
+<!-- This page Block will render the Survey Questions -->
+<apex:pageBlock mode="edit" title="Survey Questions">
+<apex:pageBlockTable frame="box" value="{!surveyQuestionList}" var="sur" >  
+    <apex:column headerValue="{!$ObjectType.SURVEYSYNCH__Survey_Question__c.fields.Id.label}"><apex:outputLink value="/{!sur.Id}" target="_blank"><apex:outputText escape="true" value="{!sur.Id}"></apex:outputText></apex:outputLink></apex:column>            
+    <apex:column headerValue="{!$ObjectType.SURVEYSYNCH__Survey_Question__c.fields.Name.label}"><apex:outputLink value="/{!sur.Id}" target="_blank"><apex:outputText escape="true" value=" {!sur.Name}"></apex:outputText></apex:outputLink></apex:column>                
+    <apex:column headerValue="{!$ObjectType.SURVEYSYNCH__Survey_Question__c.fields.SURVEYSYNCH__question__c.label}"><apex:outputText escape="true" value="{!sur.SURVEYSYNCH__question__c}"></apex:outputText></apex:column>            
+    <apex:column headerValue="{!$ObjectType.SURVEYSYNCH__Survey_Question__c.fields.CreatedDate.label}"><apex:outputText escape="true" value="{!sur.CreatedDate}"></apex:outputText></apex:column>            
+</apex:pageBlockTable>  
+</apex:pageBlock>
+<!-- this outputtext will render whenever there is no questions availaible -->
+<apex:outputtext escape="true" rendered="{!IF(surveyQuestionList.size==0, true, false)}"  >&nbsp;&nbsp;&nbsp;No questions available.</apex:outputtext>
+
+
+</apex:page>

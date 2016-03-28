@@ -1,0 +1,2 @@
+<apex:page standardController="partnernakul__TestObjectMetadata__c" extensions="partnernakul.step1controller" action="{!redirectToPage}">
+</apex:page>

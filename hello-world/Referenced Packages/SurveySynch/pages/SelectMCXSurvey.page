@@ -1,0 +1,96 @@
+<apex:page controller="SURVEYSYNCH.ConfigurationController" tabStyle="SURVEYSYNCH__Survey__c" showHeader="false" sidebar="false" action="{!checkExceptions}">
+<title>MaritzCX Surveys</title>
+
+<script type="text/javascript">
+ function fillIn(name, id)
+   {
+   
+      var winMain=window.opener;
+      if (null==winMain)
+      {
+         winMain=window.parent.opener;
+      }
+      var ele=winMain.document.getElementById('{!$CurrentPage.parameters.namefield}');
+      ele.value=name;
+      ele=winMain.document.getElementById('{!$CurrentPage.parameters.idfield}');
+      ele.value=id;
+      CloseWindow();
+   }
+ 
+   function CloseWindow()
+   {
+      var winMain=window.opener;
+      if (null==winMain)
+      {
+         winMain=window.parent.opener;
+      }
+      winMain.closeLookupPopup();
+   }
+</script>
+<apex:form id="childform">
+
+    <apex:outputPanel rendered="{!isMcxSurveyException}">
+        <br/>
+        <apex:pageMessages id="msg" />
+    </apex:outputPanel>
+      
+    <apex:outputPanel id="page" layout="block" style="margin:5px;padding:10px;padding-top:2px;" rendered="{!NOT(isMcxSurveyException)}">
+        
+        
+          <!-- SEARCH TAB -->
+    
+              <apex:pageBlock title="Lookup">
+            
+                  <apex:outputPanel id="top" layout="block" style="margin:5px;padding:10px;padding-top:2px;">
+                    <apex:outputLabel value="Search" style="font-weight:Bold;padding-right:10px;" for="txtSearch"/>
+                    <apex:inputText id="txtSearch" value="{!searchString}" />
+                      <span style="padding-left:5px"><apex:commandButton id="btnGo" value="Go!" action="{!searchMcxSuvreys}" rerender="searchResults"></apex:commandButton></span>
+                  </apex:outputPanel>
+       
+                <apex:outputPanel id="pnlSearchResults" style="margin:10px;height:350px;overflow-Y:auto;" layout="block">
+                    <apex:pageBlock id="searchResults"> 
+                      <apex:pageBlockTable value="{!SurveyList}" var="surveyResults" id="tblResults">
+                        <apex:column >
+                          <apex:facet name="header">
+                            <apex:outputPanel >Survey Name</apex:outputPanel>
+                          </apex:facet>
+                           <apex:outputLink value="#" onclick="fillIn('{!surveyResults.SurveyName}', '{!surveyResults.SurveyID}')"><apex:outputText escape="true" value="{!surveyResults.SurveyName}"></apex:outputText></apex:outputLink>     
+                        </apex:column>
+                        <!-- <apex:column >
+                        <apex:facet name="header">
+                            <apex:outputPanel >Survey Key</apex:outputPanel>
+                          </apex:facet>
+                        <apex:outputText escape="true" >{!surveyResults.Id}</apex:outputText>
+                        </apex:column>-->
+                        
+                         <apex:column >
+                           <apex:facet name="header">
+                            <apex:outputPanel >Owner </apex:outputPanel>
+                          </apex:facet>
+                        
+                        <apex:outputText escape="true"  value="{!surveyResults.OwnerName}"></apex:outputText>
+                        </apex:column>
+                        <apex:column >
+                        <apex:facet name="header">
+                            <apex:outputPanel >Preview Survey</apex:outputPanel>
+                          </apex:facet>
+                        <apex:outputText escape="true" ><apex:outputLink value="{!surveyResults.PreviewLink}" target="_blank">Preview </apex:outputLink></apex:outputText>
+                        </apex:column>
+                         <!--<apex:column >
+                       <apex:facet name="header">
+                            <apex:outputPanel >Owner Id</apex:outputPanel>
+                          </apex:facet>
+                        
+                        <apex:outputText escape="true" >{!surveyResults.OwnerID}</apex:outputText>
+                        </apex:column>-->
+                       
+                      </apex:pageBlockTable>
+                    </apex:pageBlock>
+               
+                </apex:outputPanel>
+     </apex:pageBlock>       
+            
+  </apex:outputPanel>
+
+</apex:form>
+</apex:page>

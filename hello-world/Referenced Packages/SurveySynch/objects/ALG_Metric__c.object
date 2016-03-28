@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Case_Closure_Survey_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MCX Survey Id selected from the Configuration Page</description>
+        <externalId>false</externalId>
+        <label>Case Closure Survey Id</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Closure_Survey_Key__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MCX Survey Key selected from the Configuration Page</description>
+        <externalId>false</externalId>
+        <label>Case Closure Survey Key</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Closure_Survey_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MCX Survey Name  selected from the Configuration Page</description>
+        <externalId>false</externalId>
+        <label>Case Closure Survey Name</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Closure_Survey_OwnerId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MCX Survey Owner Id  selected from the Configuration Page</description>
+        <externalId>false</externalId>
+        <label>Case Closure Survey OwnerId</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Closure_Survey_OwnerName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MCX Survey Owner Name  selected from the Configuration Page</description>
+        <externalId>false</externalId>
+        <label>Case Closure Survey OwnerName</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Closure_Survey_Preview_Link__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MCX Survey Preview Link selected from the Configuration Page</description>
+        <externalId>false</externalId>
+        <label>Case Closure Survey Preview Link</label>
+        <length>254</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Dont_send_surveys_for_cases__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Do not send surveys for cases created from the MaritzCX platform</description>
+        <externalId>false</externalId>
+        <label>Do not send surveys for cases</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>InvitationSurveyforCase__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Invitation Survey for Case closure</description>
+        <externalId>false</externalId>
+        <label>InvitationSurveyforCase</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>InvitationSurveyforLead__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This is the survey to be selected for lead conversion</description>
+        <externalId>false</externalId>
+        <label>InvitationSurveyforLead</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KM1_Goal__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Key Metric 1- Goal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KM1_Max__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Key Metric 1- Max</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KM1_Min__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Key Metric 1- Min</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KM2_Goal__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Key Metric 2- Goal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KM2_Max__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Key Metric 2- Max</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KM2_Min__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Key Metric 2- Min</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Key_Metric_1_Chart__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Key Metric 1 Chart</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Key_Metric_2_Chart__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Key Metric 2 Chart</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Conversion_Survey_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Lead Conversion Survey Id</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Conversion_Survey_Key__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MCX Survey Key selected from the Configuration Page for Lead Conversion</description>
+        <externalId>false</externalId>
+        <label>Lead Conversion Survey Key</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Conversion_Survey_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MCX Survey Name selected from the Configuration Page for Lead Conversion</description>
+        <externalId>false</externalId>
+        <label>Lead Conversion Survey Name</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Conversion_Survey_OwnerId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MCX Survey Owner Id selected from the Configuration Page for Lead Conversion</description>
+        <externalId>false</externalId>
+        <label>Lead Conversion Survey OwnerId</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Conversion_Survey_OwnerName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MCX Survey Owner Name selected from the Configuration Page for Lead Conversion</description>
+        <externalId>false</externalId>
+        <label>Lead Conversion Survey OwnerName</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Conversion_Survey_Preview_Link__c</fullName>
+        <deprecated>false</deprecated>
+        <description>MCX Survey Preview Link selected from the Configuration Page for Lead Conversion</description>
+        <externalId>false</externalId>
+        <label>Lead Conversion Survey Preview Link</label>
+        <length>254</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>3. MaritzCX: Configuration Settings</label>
+</CustomObject>

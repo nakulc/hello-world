@@ -1,0 +1,18 @@
+<apex:page controller="SearchPageController">
+   <apex:pageBlock title="Contacts">
+      <apex:pageBlockTable value="{!contacts}" var="contact">
+         <apex:column title="Name"><a href="/{!contact.Id}"><apex:outputText value="{!contact.Name}" /></a>
+         </apex:column>
+         <apex:column value="{!contact.MailingCity}"/>
+         <apex:column value="{!contact.Phone}"/>
+      </apex:pageBlockTable>
+   </apex:pageBlock>
+   <apex:pageBlock title="Accounts">
+      <apex:pageBlockTable value="{!accounts}" var="account">
+         <apex:column title="Name"><a href="/{!account.Id}"><apex:outputText value="{!account.Name}" /></a>
+         </apex:column>
+         <apex:column value="{!account.BillingCity}"/>
+         <apex:column value="{!account.Phone}"/>
+      </apex:pageBlockTable>
+   </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Company_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Company Name</shortDescription>
+        <value>MaritzCX</value>
+    </labels>
+    <labels>
+        <fullName>Deleted_Response_Message</fullName>
+        <categories>Visualforce</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deleted Response Message</shortDescription>
+        <value>The response that originated this case has been deleted from the MaritzCX platform.</value>
+    </labels>
+    <labels>
+        <fullName>Deleted_Response_Message_Formula</fullName>
+        <categories>Custom Field</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Deleted Response Message Formula</shortDescription>
+        <value>Original Response Deleted.</value>
+    </labels>
+    <labels>
+        <fullName>FLS_CRUD_Error_Message</fullName>
+        <categories>Trigger, Visualforce</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>FLS CRUD Error Message</shortDescription>
+        <value>Insufficient privileges. Please contact your System Administrator.</value>
+    </labels>
+    <labels>
+        <fullName>No_Active_Record_Type</fullName>
+        <categories>Visualforce</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No Active Case Record Type</shortDescription>
+        <value>No active Case Record Type is available.</value>
+    </labels>
+</CustomLabels>

@@ -1,0 +1,48 @@
+<apex:page controller="partnernakul.displayvalues">
+  <!-- Begin Default Content REMOVE THIS -->
+  <apex:pageBlock >
+  <h1>Congratulations : </h1>
+  Custom field added successfully.
+  <br/>
+  <br/>
+  <apex:form >
+  <apex:pageBlock >
+      <table>
+          <tr>
+          <td><h1> Objects : </h1></td>
+          <td><apex:outputText value="{!selectedObjects}"/></td>
+      </tr>
+      </table>
+  </apex:pageBlock>
+  <apex:pageBlock >
+  <table>
+       <tr><td><h1> Field Label : </h1></td><td><apex:outputText value="{!fieldlabel}"/></td></tr>
+       <tr><td><h1> Field Type : </h1></td><td><apex:outputText value="{!fieldtype}"/></td></tr>
+      <tr>
+          <td><h1> Field Length : </h1></td>
+          <td><apex:outputText value="{!fieldlength}"/></td>
+      </tr>
+      <tr>
+          <td><h1> Default Value : </h1></td>
+          <td><apex:outputText value="{!defaultvalue}"/></td>
+      </tr>
+      <tr>
+          <td><h1> Required : </h1></td>
+          <td><apex:outputText value="{!req}"/></td>
+      </tr>
+      <tr>
+          <td><h1> External Id: </h1></td>
+          <td><apex:outputText value="{!ext}"/></td>
+      </tr>
+      <tr>
+          <td><h1> Unique : </h1></td>
+          <td><apex:outputText value="{!unique}"/></td>
+      </tr>
+  </table>
+  </apex:pageBlock>
+  
+  <h1><apex:commandlink id="backtohomepage" value="  Back  " action="/apex/addcustomfieldstep1" /></h1>
+  </apex:form>
+  </apex:pageBlock>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

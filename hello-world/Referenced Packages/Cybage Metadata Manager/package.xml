@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cybage Metadata Manager</fullName>
+    <apiAccessLevel>Unrestricted</apiAccessLevel>
+    <namespacePrefix>partnernakul</namespacePrefix>
+    <types>
+        <members>AddNewCustomFieldFinal</members>
+        <members>AddNewCustomFieldStep1</members>
+        <members>MetadataTestClass</members>
+        <members>MetadataTestClass1</members>
+        <members>MetadataTestClass2</members>
+        <members>MetadataTestClass3</members>
+        <members>displayvalues</members>
+        <members>step1controller</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>addcustomfieldstep1</members>
+        <members>addcustomfieldstep1err</members>
+        <members>addcustomfieldstep2</members>
+        <members>addcustomfieldstep2autonumber</members>
+        <members>addcustomfieldstep2checkbox</members>
+        <members>addcustomfieldstep2currency</members>
+        <members>addcustomfieldstep2date</members>
+        <members>addcustomfieldstep2datetime</members>
+        <members>addcustomfieldstep2email</members>
+        <members>addcustomfieldstep2multiselectpicklist</members>
+        <members>addcustomfieldstep2number</members>
+        <members>addcustomfieldstep2phone</members>
+        <members>addcustomfieldstep2picklist</members>
+        <members>addcustomfieldstep2textarea</members>
+        <members>addcustomfieldstep2url</members>
+        <members>customfieldadded</members>
+        <members>step1controller</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>SOAPEndPoint__c.EndPointUrl__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>SOAPEndPoint__c</members>
+        <members>TestObjectMetadata__c</members>
+        <members>TestObject__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Add_Field</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>TestObjectMetadata__c-TestObjectMetadata Layout</members>
+        <members>TestObject__c-TestObject Layout</members>
+        <name>Layout</name>
+    </types>
+    <version>33.0</version>
+</Package>

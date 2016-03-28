@@ -1,0 +1,83 @@
+<!-- This page is used to display the entire MaritzCX response in the Pop Window through the viewResponse LINK -->
+<apex:page sidebar="false" standardStylesheets="false" showHeader="false"  controller="SURVEYSYNCH.DisplayResponseViewController">
+            <script>console.log(window.name);console.log('herere');console.log(window.id);</script>
+    <apex:stylesheet value="{!$Resource.SURVEYSYNCH__compiled}"/>
+    <apex:stylesheet value="{!$Resource.SURVEYSYNCH__telecompiled}"/>
+    <apex:stylesheet value="{!$Resource.SURVEYSYNCH__forms}"/>
+    <apex:stylesheet value="{!$Resource.SURVEYSYNCH__custommin}"/>
+    
+    <apex:outputPanel rendered="{!isException}">
+    <br/>
+    <div id="divContent">
+        <div class="responses-content">
+            <table id="Responses" class="MainListTable" align="center" style="width: 90%;">
+                <thead>
+                    <tr>
+                        <th class="TextAlignLeft" width="100%">
+                            <apex:Messages />
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    </apex:outputPanel>
+    
+    <apex:outputPanel rendered="{!NOT(isException)}">
+    <div id="ResponseViewDialogueContent">
+        <div class="MainForm" style="margin: 5px 10px 5px 10px;">
+            <div>
+                <div class="MarginB10">
+                    <strong></strong><span id="spanStartDate"></span>
+                </div>
+                <!--<div class="MarginB10">
+                    <strong>Contact:&nbsp;</strong><span id="spanStartDate"><apex:outputText escape="true" value="{!responseContent.contactName}"></apex:outputText></span>
+                </div>
+                <div class="MarginB10">
+                    <strong>Survey:&nbsp;</strong><span id="spanStartDate"><apex:outputText escape="true" value="{!responseContent.survey}"></apex:outputText></span>
+                </div>-->
+                <div class="MarginB10">
+                    <strong>Started:&nbsp;</strong><span id="spanStartDate"><apex:outputText escape="true" value="{!responseContent.startDate}"></apex:outputText></span>
+                </div>
+                <!--<div class="MarginB10">
+                    <strong>Email:&nbsp;</strong><span id="spanStartDate"><apex:outputText escape="true" value="{!responseContent.email}"></apex:outputText></span>
+                </div>-->
+                <div class="MarginB10">
+                    <strong>Completed:&nbsp;</strong><span id="spanCompletedDate"><apex:outputText escape="true" value="{!responseContent.completedDate}"></apex:outputText></span>
+                </div>
+                <div class="MarginB10">
+                    <strong>Time Spent (hr:min:sec):&nbsp;</strong><span id="spanTimeSpent"><apex:outputText escape="true" value="{!responseContent.timespent}"></apex:outputText></span>
+                </div>
+                <div id="divAlertName" class="MarginB10" style="">
+                    <strong>Alert:&nbsp;</strong><span id="spanAlertName"><apex:outputText escape="true" value="{!responseContent.alertName}"></apex:outputText></span>
+                </div>
+                <div id="divAlertCriteria" class="MarginB10" style="">
+                    <strong>Criteria:&nbsp;</strong><span id="spanAlertCriteria"><apex:outputText escape="true" value="{!responseContent.alertCriteria}"></apex:outputText></span>
+                </div>
+            </div>
+            <div style="clear: both;"></div> 
+            <div id="divContent" style="">
+                <div class="responses-content">
+                    <table id="Responses" class="MainListTable" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th class="TextAlignLeft" width="50%">Question</th>
+                                <th class="TextAlignLeft">Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody id="QuestionsBody">
+                            <apex:repeat value="{!responseContent.questions}" var="questionAnswer">
+                            <apex:repeat value="{!questionAnswer}" var="question">
+                                <tr class="questionRow" id="S60998">
+                                    <td><apex:outputText escape="true" value="{!question}"></apex:outputText></td>
+                                    <td><span class="responseText" id="A60998"><apex:outputText escape="true" value="{!questionAnswer[question]}"></apex:outputText></span></td>
+                                </tr>
+                            </apex:repeat></apex:repeat>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </apex:outputPanel>
+</apex:page>

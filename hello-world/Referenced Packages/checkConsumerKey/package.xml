@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>checkConsumerKey</fullName>
+    <apiAccessLevel>Unrestricted</apiAccessLevel>
+    <namespacePrefix>ashu009</namespacePrefix>
+    <types>
+        <members>checkConsumerKey</members>
+        <name>Application</name>
+    </types>
+    <version>33.0</version>
+</Package>

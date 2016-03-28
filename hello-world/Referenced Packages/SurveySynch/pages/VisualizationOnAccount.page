@@ -1,0 +1,112 @@
+<!-- This apex page is used to display charts on Account Page -->
+<apex:page standardController="Account" extensions="SURVEYSYNCH.VisualizationsController" >
+  <apex:pageBlock >
+  <apex:pageBlockSection columns="1" rendered="{!flscheck}">
+    <apex:pageMessages id="msg" />
+   </apex:pageBlockSection>
+   <apex:pageBlockSection columns="2" rendered="{!NOT(flscheck)}">
+      <!-- this pageblocksection renders when the configurations for Key Metric 1 are not Provided -->
+   <apex:pageblocksectionItem rendered="{!NOT(isKM1)}"><apex:outputText escape="true" value="Please provide valid {!$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_1__c.Label} Configuration Settings."><br/><br/></apex:outputText></apex:pageblocksectionItem>
+   <!-- This PageBlockSection renders when the chart Selected is Gauge for Key Metric 1 -->
+   <apex:pageblocksectionItem rendered="{!IF(keyMetric1ChartType == 'gauge' && isKM1 && NOT(outofrangekm1) && NOT(nodatak1), true, false)}">
+
+   <apex:chart name="MyChart" height="250" width="450" animate="true" data="{!key1Data}">
+  
+       <apex:axis grid="true" margin="-10" type="Gauge" position="left" gridFill="true" title="{!IF((nodatak1) || (outofrangekm1 == true) ,'', Text(key1Data[0].size))}" minimum="{!minKM1Val}" maximum="{!maxKM1Val}">
+       <apex:chartLabel font="25px Helevtica,sans-serif"/>
+       
+       <apex:outputText escape="true" style="display: block; margin: 0px auto; text-align: center; padding-right: {!IF(keyMetric1ChartType == keyMetric2ChartType,'11px','38px')};" value="{!IF(nodatak1,'',$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_1__c.Label)}"/>
+       
+       </apex:axis>
+       <apex:gaugeSeries dataField="size" tips="false" highlight="false" donut="50" colorSet="{!colorset1}"/>
+   </apex:chart>  
+   </apex:pageblocksectionItem>
+   <!-- This PageBlockSection renders when the chart Selected is Gauge for Key Metric 1 without any data -->
+   <apex:pageBlockSectionItem rendered="{!IF(keyMetric1ChartType == 'gauge' && isKM1 && nodatak1, true, false)}">
+       <apex:outputText escape="true" rendered="{!nodatak1}" value="No {!$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_1__c.Label} data available."><br/><br/></apex:outputText>   
+   </apex:pageBlockSectionItem>   
+       
+   <apex:pageblocksectionItem rendered="{!IF(outofrangekm1 && isKM1,true,false)}"><apex:outputText escape="true" value="Out of range {!$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_1__c.Label} ({!outofrangek1val})."><br/><br/></apex:outputText></apex:pageBlockSectionItem>
+ <!-- This PageBlockSection renders when the chart Selected is Bar for Key Metric 1 -->
+ <apex:pageBlockSectionItem rendered="{!IF(keyMetric1ChartType == 'bar' && isKM1 && NOT(outofrangekm1) && NOT(nodatak1), true, false)}" >
+        <apex:chart height="270" width="400" animate="true" data="{!bar1Data}"> 
+            <apex:axis type="Numeric" steps="3" position="left" fields="data"  minimum="{!minKM1Val}" maximum="{!maxKM1Val}"/>    
+            <apex:axis type="Category"  position="bottom" fields="name" />            
+             
+       <apex:outputText escape="true" style="display: block; margin: 5px auto; text-align: center;padding-right: {!IF(keyMetric1ChartType == keyMetric2ChartType,'35px','12px')};" value="{!IF(nodatak1,'',$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_1__c.Label)}"/>
+       
+            <apex:barSeries tips="false" highlight="false" xPadding="150" orientation="vertical" colorSet="{!colorset1}" axis="bottom" xField="name" yField="data" /> 
+           
+           
+        </apex:chart>
+        
+    </apex:pageBlockSectionItem>
+    <!-- This PageBlockSection renders when the chart Selected is Bar for Key Metric 1 without any data -->
+    <apex:pageBlockSectionItem rendered="{!IF(keyMetric1ChartType == 'bar' && isKM1 && nodatak1, true, false)}" >
+     <apex:outputText escape="true" rendered="{!nodatak1}" value="No {!$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_1__c.Label} data available."><br/><br/></apex:outputText>        
+    </apex:pageBlockSectionItem>
+    <!-- This PageBlockSection renders when the chart Selected is None for Key Metric 1 -->
+   <apex:pageblocksectionItem rendered="{!IF(keyMetric1ChartType == 'none' && isKM1 && NOT(outofrangekm1), true, false)}">
+   <apex:outputText escape="true" >
+
+   <br/><br/>No chart type selected</apex:outputText>
+    </apex:pageBlockSectionItem>
+     <!-- this pageblocksection renders when the configurations for Key Metric 2 are not Provided -->
+   <apex:pageblocksectionItem rendered="{!NOT(isKM2)}"><apex:outputText escape="true" value="Please provide valid {!$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_2__c.Label} Configuration Settings."><br/><br/></apex:outputText></apex:pageblocksectionItem>
+   <!-- This PageBlockSection renders when the chart Selected is Gauge for Key Metric 2 -->
+  <apex:pageBlockSectionitem rendered="{!IF(keyMetric2ChartType == 'gauge' && isKM2 && NOT(outofrangekm2) && NOT(nodatak2), true, false)}">
+   <apex:chart name="MyChart2" height="250" width="450" animate="true" data="{!key2Data}">
+       <apex:axis margin="-10" type="Gauge" position="left" title="{!IF((nodatak2)  || (outofrangekm2 == true),'', TEXT(key2Data[0].size))}"  minimum="{!minKM2Val}" maximum="{!maxKM2Val}" steps="10">
+       <apex:chartLabel font="25px sans-serif"/>
+       
+       <apex:outputText escape="true" style="display: block; margin: 0px auto; text-align: center; padding-right: {!IF(keyMetric1ChartType == keyMetric2ChartType,'9px','44px')};" value="{!IF(nodatak2,'',$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_2__c.Label)}"/>
+       
+       </apex:axis>
+       <apex:gaugeSeries tips="false" highlight="false" dataField="size" donut="50" colorSet="{!colorset2}"/>
+   </apex:chart>
+   </apex:pageBlockSectionitem>
+   <!-- This PageBlockSection renders when the chart Selected is Gauge for Key Metric 2 without any data-->
+   <apex:pageBlockSectionItem rendered="{!IF(keyMetric2ChartType == 'gauge' && isKM2 && nodatak2, true, false)}">
+       <apex:outputText escape="true" rendered="{!nodatak2}" value="No {!$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_2__c.Label} data available."><br/><br/></apex:outputText>   
+   </apex:pageBlockSectionItem>   
+   
+ 
+   <apex:pageblocksectionItem rendered="{!IF( outofrangekm2 && isKM2,true,false)}"><apex:outputText escape="true" value="Out of range {!$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_2__c.Label} ({!outofrangek2val}) ."><br /><br /></apex:outputText></apex:pageBlockSectionitem>
+   <!-- This PageBlockSection renders when the chart Selected is Bar for Key Metric 2 -->
+  <apex:pageBlockSectionItem rendered="{!IF(keyMetric2ChartType == 'bar' && isKM2 && NOT(outofrangekm2)&& NOT(nodatak2), true, false)}" >
+       
+        <apex:chart height="270" width="400" animate="true" data="{!bar2Data}"> 
+            <apex:axis type="Numeric" steps="3" position="left" fields="data"  minimum="{!minKM2Val}" maximum="{!maxKM2Val}" />    
+            <apex:axis type="Category" gridFill="true" position="bottom" fields="name" />            
+            
+       <apex:outputText escape="true" style="display: block; margin: 0px auto; text-align: center;padding-right: {!IF(keyMetric1ChartType == keyMetric2ChartType,'35px','12px')};" value="{!IF(nodatak2,'',$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_2__c.Label)}"/>
+       
+            <apex:barSeries tips="false" highlight="false" xPadding="150" orientation="vertical" colorSet="{!colorset2}" axis="bottom" xField="name" yField="data" />
+    
+        </apex:chart>
+    </apex:pageBlockSectionItem>
+    <!-- This PageBlockSection renders when the chart Selected is Bar for Key Metric 2 without any data -->
+<apex:pageBlockSectionItem rendered="{!IF(keyMetric2ChartType == 'bar' && isKM2 && nodatak2, true, false)}" >
+     <apex:outputText escape="true" rendered="{!nodatak2}" value="No {!$ObjectType.SURVEYSYNCH__Survey_Response__c.fields.SURVEYSYNCH__Key_Metric_2__c.Label} data available."><br/><br/></apex:outputText>        
+    </apex:pageBlockSectionItem>
+   <!-- This PageBlockSection renders when the chart Selected is None for Key Metric 2 -->
+     <apex:pageblocksectionItem rendered="{!IF(keyMetric2ChartType == 'none' && isKM2 && NOT(outofrangekm2) , true, false)}">
+   <apex:outputText escape="true"><br/><br/>No chart type selected</apex:outputText>
+    </apex:pageBlockSectionItem>
+   </apex:pageBlockSection>
+   
+   </apex:pageBlock> 
+<!-- this Section is used to display the information about surveys and responses -->
+    <center>
+      <apex:outputText escape="true" rendered="{!IF((NOT(outofrangekm1) || NOT(outofrangekm2)) && numberOfSurveys != 0,IF(flscheck, false, true),false)}" style="font-weight:bold" value=" Average of {!numberOfSurveys} Surveys. Responses: {!numberOfResponses}"></apex:outputText>
+        <br/>
+        <apex:variable value="{!1}" var="surveyNameCount" />
+        <apex:repeat value="{!nameOfSurvey}" var="SurveyNames">
+            
+         <apex:outputText escape="true" rendered="{!IF(NOT(outofrangekm1) || NOT(outofrangekm2) ,IF(flscheck, false, true),false)}" value="{!SurveyNames['Name']}{!IF(surveyNameCount == nameOfSurvey.size, '', ', ')}"> </apex:outputText>   
+        <apex:variable value="{!surveyNameCount+1}" var="surveyNameCount"/>
+        </apex:repeat>
+    </center>
+       
+   
+</apex:page>
